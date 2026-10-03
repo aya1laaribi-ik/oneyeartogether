@@ -1,0 +1,418 @@
+:root {
+  color-scheme: light dark;
+
+  --bg: #f6efe7;
+  --ink: #24201d;
+  --muted: #756b63;
+  --paper: #fffdf9;
+  --accent: #b85c68;
+  --accent2: #e8a9ad;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+#app {
+  min-height: 100vh;
+  background: var(--bg);
+
+  display: grid;
+  place-items: center;
+
+  padding: 32px;
+  overflow: hidden;
+}
+
+.scene {
+  text-align: center;
+  width: min(720px, 100%);
+}
+
+.kicker {
+  font: 600 12px/1.2 Arial, sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelope {
+  position: relative;
+
+  width: min(360px, 82vw);
+  height: 235px;
+
+  margin: auto;
+
+  cursor: pointer;
+
+  perspective: 1000px;
+
+  filter: drop-shadow(0 18px 22px #0002);
+
+  transition: transform 0.25s;
+}
+
+.envelope:hover {
+  transform: translateY(-5px) rotate(-0.5deg);
+}
+
+.env-body {
+  position: absolute;
+  inset: 0;
+
+  background: #e7c5a9;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+.env-body::before,
+.env-body::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: 0;
+
+  width: 72%;
+  height: 100%;
+
+  background: #d9ae91;
+}
+
+.env-body::before {
+  left: -22%;
+  transform: skewY(32deg);
+}
+
+.env-body::after {
+  right: -22%;
+  transform: skewY(-32deg);
+}
+
+.flap {
+  position: absolute;
+
+  z-index: 3;
+
+  top: 0;
+  left: 0;
+
+  width: 0;
+  height: 0;
+
+  border-left: 180px solid transparent;
+  border-right: 180px solid transparent;
+  border-top: 118px solid #f0d2ba;
+
+  transform-origin: top;
+
+  transition:
+    transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.letter {
+  position: absolute;
+
+  z-index: 2;
+
+  left: 7%;
+  right: 7%;
+  bottom: 10px;
+
+  height: 205px;
+
+  background: var(--paper);
+
+  border-radius: 5px;
+
+  padding: 24px 25px;
+
+  text-align: left;
+
+  transition:
+    transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    bottom 0.8s;
+
+  box-shadow: 0 3px 10px #0001;
+}
+
+.letter h2 {
+  margin: 0 0 8px;
+
+  font-size: 22px;
+}
+
+.letter p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 14px;
+}
+
+.seal {
+  position: absolute;
+
+  z-index: 5;
+
+  left: 50%;
+  top: 102px;
+
+  transform: translate(-50%, -50%);
+
+  width: 52px;
+  height: 52px;
+
+  border-radius: 50%;
+
+  background: var(--accent);
+  color: white;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 22px;
+
+  box-shadow: 0 4px 12px #0003;
+
+  transition: opacity 0.3s;
+}
+
+.open .flap {
+  transform: rotateX(178deg);
+}
+
+.open .letter {
+  transform: translateY(-125px);
+  bottom: 0;
+}
+
+.open .seal {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hint {
+  margin-top: 22px;
+
+  color: var(--muted);
+
+  font: 13px Arial, sans-serif;
+}
+
+.hidden {
+  display: none;
+}
+
+
+/* =========================
+   QUESTION CARD
+========================= */
+
+.card {
+  background: var(--paper);
+
+  border: 1px solid #00000010;
+
+  border-radius: 20px;
+
+  padding: 42px 28px;
+
+  box-shadow: 0 18px 50px #00000012;
+
+  animation: pop 0.5s ease;
+
+  max-width: 620px;
+
+  margin: auto;
+}
+
+.card h1 {
+  font-size: 42px;
+
+  line-height: 1.05;
+
+  margin: 0 0 16px;
+}
+
+.card p {
+  font-size: 18px;
+
+  line-height: 1.65;
+
+  color: var(--muted);
+
+  margin: 0 auto 28px;
+
+  max-width: 510px;
+}
+
+.buttons {
+  position: relative;
+
+  height: 70px;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 18px;
+
+  align-items: center;
+}
+
+.btn {
+  border: 0;
+
+  border-radius: 999px;
+
+  padding: 14px 30px;
+
+  font: bold 15px Arial, sans-serif;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.yes {
+  background: var(--accent);
+
+  color: white;
+}
+
+.yes:hover {
+  transform: scale(1.05);
+}
+
+.no {
+  background: #eee7df;
+
+  color: #4b443f;
+
+  position: relative;
+}
+
+
+/* =========================
+   YEEEYYY SCREEN
+========================= */
+
+.yay {
+  font-size: 68px;
+
+  margin: 0 0 10px;
+
+  animation: bounce 0.7s ease;
+}
+
+.hearts {
+  font-size: 30px;
+
+  letter-spacing: 8px;
+
+  margin-bottom: 18px;
+}
+
+.restart {
+  margin-top: 20px;
+
+  background: transparent;
+
+  color: var(--muted);
+
+  border: 0;
+
+  cursor: pointer;
+
+  text-decoration: underline;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes pop {
+
+  from {
+    opacity: 0;
+
+    transform:
+      scale(0.94)
+      translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: none;
+  }
+
+}
+
+@keyframes bounce {
+
+  0% {
+    transform:
+      scale(0.5)
+      rotate(-8deg);
+  }
+
+  60% {
+    transform:
+      scale(1.15)
+      rotate(4deg);
+  }
+
+  100% {
+    transform:
+      scale(1)
+      rotate(0);
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+  #app {
+    padding: 20px;
+  }
+
+  .card {
+    padding: 34px 20px;
+  }
+
+  .card h1 {
+    font-size: 34px;
+  }
+
+  .flap {
+    border-left-width: 41vw;
+    border-right-width: 41vw;
+    border-top-width: 118px;
+  }
+
+}

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>One Year Later</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main id="app">
+
+  <section class="scene" id="scene">
+
+    <!-- ENVELOPE -->
+    <div id="envelopeView">
+
+      <div class="kicker">
+        a message from one year ago
+      </div>
+
+      <div
+        class="envelope"
+        id="envelope"
+        aria-label="Open the letter"
+        role="button"
+        tabindex="0"
+      >
+
+        <div class="env-body"></div>
+
+        <div class="letter">
+          <h2>Dear my favorite person,</h2>
+
+          <p>
+            There is something I wanted you to read one year from now...
+          </p>
+        </div>
+
+        <div class="flap"></div>
+
+        <div class="seal">
+          ♥
+        </div>
+
+      </div>
+
+      <div class="hint">
+        click the letter to open
+      </div>
+
+    </div>
+
+
+    <!-- QUESTION -->
+    <div id="questionView" class="hidden">
+
+      <div class="card">
+
+        <div class="kicker">
+          one year later
+        </div>
+
+        <h1>
+          Do you love me?
+        </h1>
+
+        <p>
+          If you're reading this, we made it through another year
+          of discovering each others, random moments, and probably a few arguments
+          over absolutely nothing.
+        </p>
+
+        <div class="buttons" id="buttons">
+
+          <button class="btn yes" id="yes">
+            YES ♥
+          </button>
+
+          <button class="btn no" id="no">
+            NO
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- YES SCREEN -->
+    <div id="yayView" class="hidden">
+
+      <div class="card">
+
+        <div class="yay">
+          YEEEYYY!!
+        </div>
+
+        <div class="hearts">
+          ♥ ♥ ♥
+        </div>
+
+        <p>
+          Correct answer. I knew you had good taste. 😌
+          <br><br>
+          Happy anniversary, my favorite person.
+        </p>
+
+        <button class="restart" id="restart">
+          read it again
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
